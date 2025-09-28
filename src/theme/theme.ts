@@ -3,23 +3,100 @@ import { createTheme } from '@mui/material';
 let theme = createTheme({
     palette: {
         primary: {
-            main: 'rgba(255, 68, 84, 0.76)',
-            light: 'rgba(161, 124, 127, 0.76)',
-            dark: 'rgba(45, 12, 15, 0.76)',
+            main: '#E0E0E0',
+            light: '#FFF',
+            dark: '#7e7e7eff',
             contrastText: 'rgba(14, 20, 74, 0.84)'
+        },
+        secondary: {
+            main: '#727272ff'
+        },
+        error: {
+            main: '#FF0000'
+        },
+        success: {
+            main: '#00FF88'
+        },
+        warning: {
+            main: '#FF8F0D'
+        },
+        info: {
+            main: '#38BDF8'
+        },
+        background: {
+            paper: '#212121',
+            default: '#1A1A1A'
+        },
+        text: {
+            primary: '#FFFFFF',
+            secondary: '#E0E0E0'
         }
     },
+    spacing: 8
+});
+
+theme = createTheme(theme, {
     typography: {
-        fontSize: 20
+        fontSize: 16,
+        h1: {
+            fontFamily: 'Sora',
+            fontSize: 32, // Trocar por escala relativa
+            fontWeight: 700,
+            lineHeight: 1.2,
+            color: theme.palette.text.primary
+        },
+        h2: {
+            fontFamily: 'Sora',
+            fontSize: 24, // Trocar por escala relativa
+            fontWeight: 700,
+            lineHeight: 1.2,
+            color: theme.palette.text.primary
+        },
+        h3: {
+            fontFamily: 'Sora',
+            fontSize: 18,
+            fontWeight: 700,
+            lineHeight: 1.2,
+            color: theme.palette.text.primary
+        },
+        body1: {
+            fontFamily: 'Manrope',
+            fontSize: 16,
+            fontWeight: 600,
+            lineHeight: 1.4,
+            color: theme.palette.text.primary
+        },
+        body2: {
+            fontFamily: 'Manrope',
+            fontSize: 14,
+            fontWeight: 500,
+            lineHeight: 1.4,
+            color: theme.palette.text.secondary
+        },
+        caption: {
+            fontFamily: 'Manrope',
+            fontSize: 12,
+            fontWeight: 500,
+            lineHeight: 1.4,
+            color: theme.palette.text.secondary
+        }
     },
     shape: { borderRadius: 4 },
-    spacing: 4,
     components: {
         MuiButton: {
             styleOverrides: {
                 root: {
-                    backgroundColor: 'rgba(255, 68, 84, 0.76)',
-                    textTransform: 'none'
+                    backgroundColor: theme.palette.background.paper,
+                    textTransform: 'none',
+                    color: theme.palette.text.primary
+                }
+            }
+        },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: theme.palette.background.paper,
+                    border: `.5px solid ${theme.palette.secondary.main}`
                 }
             }
         }
