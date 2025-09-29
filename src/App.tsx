@@ -8,12 +8,13 @@ export default function App() {
             sx={(theme: Theme) => ({
                 width: '100vw',
                 height: '100vh',
-                padding: 4,
+                padding: 8,
                 backgroundColor: theme.palette.background.default,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
+                rowGap: 6
             })}>
             <LogoComponent />
             <Outlet />
