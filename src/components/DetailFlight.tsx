@@ -1,4 +1,4 @@
-import { Paper, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import type { ReactElement } from 'react';
 import type { DetailFlightProps } from '../types/DetailFlightProps';
 
@@ -9,12 +9,29 @@ import type { DetailFlightProps } from '../types/DetailFlightProps';
  */
 export default function DetailFlight({
     title,
-    content
+    content,
+    balance
 }: DetailFlightProps): ReactElement {
     return (
-        <Paper>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingLeft: 2,
+                paddingRight: 2
+            }}>
             <Typography variant="caption">{title}</Typography>
-            <Typography variant="body1">{content}</Typography>
-        </Paper>
+            {balance ? (
+                <Typography
+                    variant="body1"
+                    color={Number(content) > 0 ? 'success' : 'error'}>
+                    P$ {Number(content).toFixed(2)}
+                </Typography>
+            ) : (
+                <Typography variant="body1">{content}</Typography>
+            )}
+        </Box>
     );
 }
