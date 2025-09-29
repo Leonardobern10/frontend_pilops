@@ -5,4 +5,5 @@ export default interface FlightInterface {
     id: string;
     aircraft: AircraftInterface;
     flightData: FlightDataInterface;
+    balance?: boolean;
 }
