@@ -4,8 +4,8 @@ import App from './App.tsx';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './theme/theme.ts';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
-import HistoryFlight from './view/HistoryFlight.tsx';
-import DetailsFlight from './view/DetailsFlight.tsx';
+import HistoryFlight from './pages/HistoryFlight.tsx';
+import DetailsFlight from './pages/DetailsFlight.tsx';
 
 createRoot(document.getElementById('root')!).render(
     // Componente de contexto do Material UI.
