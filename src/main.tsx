@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './theme/theme.ts';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import HistoryFlight from './view/HistoryFlight.tsx';
 import DetailsFlight from './view/DetailsFlight.tsx';
 
@@ -15,9 +15,14 @@ createRoot(document.getElementById('root')!).render(
         <StrictMode>
             <BrowserRouter>
                 <Routes>
+                    <Route
+                        path="/"
+                        element={<Navigate to="/flight" replace />}
+                    />
+
                     <Route path="/flight" element={<App />}>
                         <Route index element={<HistoryFlight />} />
-                        <Route path=":pid" element={<DetailsFlight />} />
+                        <Route path=":id" element={<DetailsFlight />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
