@@ -19,8 +19,8 @@ export default function AircraftInfo({
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
-                alignItems: 'center'
+                justifyContent: 'center',
+                alignItems: 'flex-start'
             }}>
             <Typography variant="body1">{name}</Typography>
             <Typography variant="body2">{airline}</Typography>
