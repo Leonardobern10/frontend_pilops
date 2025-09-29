@@ -1,11 +1,6 @@
-import {
-    Box,
-    Button,
-    Card,
-    Typography,
-    useTheme,
-    type Theme
-} from '@mui/material';
+import { Box, type Theme } from '@mui/material';
+import LogoComponent from './components/LogoComponent';
+import { Outlet } from 'react-router';
 
 export default function App() {
     return (
@@ -13,19 +8,15 @@ export default function App() {
             sx={(theme: Theme) => ({
                 width: '100vw',
                 height: '100vh',
-                padding: 0,
-                backgroundColor: theme.palette.background.default
+                padding: 4,
+                backgroundColor: theme.palette.background.default,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'space-between'
             })}>
-            <Button variant="contained">Ola mundo!</Button>
-            <Typography variant="h1">Histórico</Typography>
-            <Typography variant="body1">Proxima seção</Typography>
-            <Card
-                sx={{
-                    width: 'fit-content',
-                    padding: 2
-                }}>
-                Koé rapaziada!
-            </Card>
+            <LogoComponent />
+            <Outlet />
         </Box>
     );
 }
