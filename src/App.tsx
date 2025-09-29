@@ -5,6 +5,7 @@ import { Outlet } from 'react-router';
 export default function App() {
     return (
         <Box
+            component={'div'}
             sx={(theme: Theme) => ({
                 width: '100vw',
                 height: '100vh',

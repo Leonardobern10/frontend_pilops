@@ -23,6 +23,7 @@ export default function FlightComponent({
     const navigate = useNavigate();
     return (
         <Card
+            component={'article'}
             onClick={() => navigate(`/flight/${id}`)}
             sx={{
                 display: 'flex',

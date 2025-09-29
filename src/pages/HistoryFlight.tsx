@@ -5,6 +5,7 @@ import FlightComponent from '../components/FlightComponent';
 export default function HistoryFlight() {
     return (
         <Box
+            component={'main'}
             sx={{
                 width: '100%',
                 height: '100%',
@@ -19,6 +20,7 @@ export default function HistoryFlight() {
                 </Typography>
             </Box>
             <Box
+                component={'section'}
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',

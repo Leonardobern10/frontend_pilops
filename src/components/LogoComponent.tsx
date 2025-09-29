@@ -8,6 +8,7 @@ import logo from '../assets/Logo_pilops.svg';
 export default function LogoComponent() {
     return (
         <Box
+            component={'header'}
             sx={{
                 width: 'fit-content',
                 height: 'fit-content',

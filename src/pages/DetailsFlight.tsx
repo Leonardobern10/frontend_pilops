@@ -18,6 +18,7 @@ export default function DetailsFlight() {
 
     return (
         <Box
+            component={'section'}
             sx={{
                 width: '100%',
                 height: '100%',
@@ -25,7 +26,11 @@ export default function DetailsFlight() {
                 flexDirection: 'column',
                 rowGap: 4
             }}>
-            <Stack direction="row" alignItems="center" spacing={4}>
+            <Stack
+                direction="row"
+                alignItems="center"
+                spacing={4}
+                component={'article'}>
                 <Box onClick={() => navigate('/flight')}>
                     <img
                         style={{ maxHeight: 25 }}
@@ -36,6 +41,7 @@ export default function DetailsFlight() {
                 <Typography variant="h2">Detalhes do Voo</Typography>
             </Stack>
             <Card
+                component={'article'}
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
