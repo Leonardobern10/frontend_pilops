@@ -19,14 +19,20 @@ export default function RouteComponent({
     to: string;
 }): ReactElement {
     return (
-        <Box>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
             <Typography variant="caption">{trajeto}</Typography>
             <Box>
                 <RouteSvg />
             </Box>
-            <Stack direction="row">
-                <Typography variant="body2">{from}</Typography>
-                <Typography variant="body2">{to}</Typography>
+            <Stack direction="row" justifyContent="space-between" width="100%">
+                <Typography variant="body1">{from}</Typography>
+                <Typography variant="body1">{to}</Typography>
             </Stack>
         </Box>
     );
