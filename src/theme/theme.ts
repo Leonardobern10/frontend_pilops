@@ -76,12 +76,26 @@ theme = createTheme(theme, {
         caption: {
             fontFamily: 'Manrope',
             fontSize: 12,
-            fontWeight: 500,
+            fontWeight: 400,
+            lineHeight: 1.4,
+            color: theme.palette.text.secondary
+        },
+        subtitle1: {
+            fontFamily: 'Sora',
+            fontSize: 18,
+            fontWeight: 600,
+            lineHeight: 1.4,
+            color: theme.palette.text.secondary
+        },
+        subtitle2: {
+            fontFamily: 'Manrope',
+            fontSize: 14,
+            fontWeight: 400,
             lineHeight: 1.4,
             color: theme.palette.text.secondary
         }
     },
-    shape: { borderRadius: 4 },
+    shape: { borderRadius: 8 },
     components: {
         MuiButton: {
             styleOverrides: {
@@ -96,7 +110,13 @@ theme = createTheme(theme, {
             styleOverrides: {
                 root: {
                     backgroundColor: theme.palette.background.paper,
-                    border: `.5px solid ${theme.palette.secondary.main}`
+                    border: `.5px solid ${theme.palette.secondary.main}`,
+                    width: '100%',
+                    paddingLeft: 4,
+                    paddingRight: 4,
+                    paddingBottom: 4,
+                    paddingTop: 2,
+                    columnGap: 10
                 }
             }
         }
