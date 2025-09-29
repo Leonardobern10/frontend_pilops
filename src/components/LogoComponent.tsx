@@ -11,8 +11,7 @@ export default function LogoComponent() {
             sx={{
                 width: 'fit-content',
                 height: 'fit-content',
-                borderColor: '#F00',
-                border: 0.5
+                borderColor: '#F00'
             }}>
             <img src={logo} alt="Logo" />
         </Box>
