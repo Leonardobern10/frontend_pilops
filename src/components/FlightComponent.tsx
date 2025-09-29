@@ -4,6 +4,7 @@ import type FlightInterface from '../types/FlightInterface';
 import AircraftInfo from './AircraftInfo';
 import RouteComponent from './RouteComponent';
 import DetailFlight from './DetailFlight';
+import { useNavigate } from 'react-router';
 
 /**
  * Componente responsável por exibir todas as informações
@@ -14,11 +15,27 @@ import DetailFlight from './DetailFlight';
  * @returns Componente React.
  */
 export default function FlightComponent({
+    id,
     aircraft,
-    flightData
+    flightData,
+    balance
 }: FlightInterface): ReactElement {
+    const navigate = useNavigate();
     return (
-        <Card>
+        <Card
+            onClick={() => navigate(`/flight/${id}`)}
+            sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                width: '100%',
+                paddingLeft: 4,
+                paddingRight: 4,
+                paddingBottom: 2,
+                paddingTop: 2,
+                columnGap: 10
+            }}>
             <AircraftInfo name={aircraft.name} airline={aircraft.airline} />
             <RouteComponent
                 trajeto="Trajeto"
@@ -27,10 +44,13 @@ export default function FlightComponent({
             />
             <DetailFlight title="Matricula" content={aircraft.registration} />
             <DetailFlight title="Data" content={flightData.date} />
-            <DetailFlight
-                title="Saldo"
-                content={flightData.balance.toString()}
-            />
+            {balance && (
+                <DetailFlight
+                    title="Saldo"
+                    balance
+                    content={flightData.balance}
+                />
+            )}
         </Card>
     );
 }
