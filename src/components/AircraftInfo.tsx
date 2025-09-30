@@ -1,5 +1,6 @@
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import type { ReactElement } from 'react';
+import AircraftContainer from './ui/AircraftContainer';
 
 /**
  * Componente responsável por exibir as informações do avião.
@@ -15,17 +16,9 @@ export default function AircraftInfo({
     airline: string;
 }): ReactElement {
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'flex-start',
-                height: '100%',
-                whiteSpace: 'nowrap'
-            }}>
+        <AircraftContainer>
             <Typography variant="body1">{name}</Typography>
             <Typography variant="body2">{airline}</Typography>
-        </Box>
+        </AircraftContainer>
     );
 }
