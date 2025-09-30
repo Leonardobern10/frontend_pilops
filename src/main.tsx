@@ -17,10 +17,10 @@ createRoot(document.getElementById('root')!).render(
                 <Routes>
                     <Route
                         path="/"
-                        element={<Navigate to="/flight" replace />}
+                        element={<Navigate to="/api/v1/flight" replace />}
                     />
 
-                    <Route path="/flight" element={<App />}>
+                    <Route path="/api/v1/flight" element={<App />}>
                         <Route index element={<HistoryFlight />} />
                         <Route path=":id" element={<DetailsFlight />} />
                     </Route>
