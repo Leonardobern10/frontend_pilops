@@ -20,7 +20,9 @@ export default function AircraftInfo({
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'flex-start'
+                alignItems: 'flex-start',
+                height: '100%',
+                whiteSpace: 'nowrap'
             }}>
             <Typography variant="body1">{name}</Typography>
             <Typography variant="body2">{airline}</Typography>
