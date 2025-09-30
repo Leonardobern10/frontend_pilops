@@ -1,9 +1,39 @@
 import { Box, Typography } from '@mui/material';
-import { flights } from '../data/flight';
+import CircularProgress from '@mui/material/CircularProgress';
 import FlightComponent from '../components/FlightComponent';
+import { getHistoryFlight } from '../services/searchFlight';
+import type FlightInterface from '../types/FlightInterface';
+import { useEffect, useState } from 'react';
 
 export default function HistoryFlight() {
-    return (
+    const [flights, setFlights] = useState<FlightInterface[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        const getFlights = async () => {
+            try {
+                const data = await getHistoryFlight();
+                setFlights(data);
+            } catch (error) {
+                console.error('Error on search history: ', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        getFlights();
+    }, []);
+
+    return loading ? (
+        <Box sx={{ height: '100%' }}>
+            <Typography variant="body1">
+                Carregando...
+                <span>
+                    <CircularProgress />
+                </span>
+            </Typography>
+        </Box>
+    ) : (
         <Box
             component={'main'}
             sx={{
@@ -25,8 +55,7 @@ export default function HistoryFlight() {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'flex-start',
-                    rowGap: 4,
-                    height: '100%'
+                    rowGap: 4
                 }}>
                 {flights.map((el) => (
                     <FlightComponent
