@@ -1,22 +1,38 @@
 import { Box, Card, Stack, Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router';
 import FlightComponent from '../components/FlightComponent';
-import { flights } from '../data/flight';
 import type FlightInterface from '../types/FlightInterface';
 import trophy from '../assets/Trophy_pilops.svg';
 import leftArrow from '../assets/LeftArrow_pilops.svg';
 import RewardComponent from '../components/RewardComponent';
+import { useEffect, useState } from 'react';
+import { getFlightDetails } from '../services/searchFlight';
 
 export default function DetailsFlight() {
     const navigate = useNavigate();
     const param = useParams();
     const id: string = param.id!;
+    const [current, setCurrent] = useState<FlightInterface>();
+    const [loading, setLoading] = useState<boolean>(true);
 
-    const currentFlight: FlightInterface = flights.filter(
-        (el) => el.id === id
-    )[0];
-
-    return (
+    useEffect(() => {
+        const currentFlight = async () => {
+            try {
+                let data = await getFlightDetails(id);
+                console.log(data);
+                if (data) setCurrent(data);
+                else throw new Error('Error on get a flight details');
+            } catch (error) {
+                console.error('Error on get a flight details: ', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        currentFlight();
+    }, []);
+    return loading ? (
+        <p>loading...</p>
+    ) : (
         <Box
             component={'section'}
             sx={{
@@ -31,7 +47,7 @@ export default function DetailsFlight() {
                 alignItems="center"
                 spacing={4}
                 component={'article'}>
-                <Box onClick={() => navigate('/flight')}>
+                <Box onClick={() => navigate('/api/v1/flight')}>
                     <img
                         style={{ maxHeight: 25 }}
                         src={leftArrow}
@@ -66,15 +82,15 @@ export default function DetailsFlight() {
                     <Typography>Recompensas</Typography>
                 </Stack>
                 <RewardComponent
-                    balance={currentFlight.flightData.balance}
-                    missionBonus={currentFlight.flightData.missionBonus}
-                    xp={currentFlight.flightData.xp}
+                    balance={current!.flightData.balance}
+                    missionBonus={current!.flightData.missionBonus}
+                    xp={current!.flightData.xp}
                 />
             </Card>
             <FlightComponent
                 id={id}
-                aircraft={currentFlight.aircraft}
-                flightData={currentFlight.flightData}
+                aircraft={current!.aircraft}
+                flightData={current!.flightData}
             />
         </Box>
     );
