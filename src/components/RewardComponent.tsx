@@ -6,6 +6,15 @@ import starIcon from '../assets/Star_pilops.svg';
 import bonusIcon from '../assets/BonusIcon_pilops.svg';
 import type { RewardComponentProps } from '../types/RewardComponentProps';
 
+/**
+ * Componente responsável por exibir as informações pertinentes
+ * as recompensas relacionadas ao determinado vôo.
+ *
+ * @param balance - Representa o saldo total conquistado em um voo especifico
+ * @param xp - Representa o valor de xp conquistado em um vôo específico
+ * @param missionBonus - Representa o valor de bonus conquistado em um voo específico
+ * @returns - Componente React que exibe informações de recompensas.
+ */
 export default function RewardComponent({
     balance,
     xp,
@@ -25,6 +34,7 @@ export default function RewardComponent({
                 iconAlt="Icone para saldo"
                 title="Ganhos totais"
                 value={balance}
+                type="balance"
             />
             <RewardDetail
                 iconSrc={starIcon}
@@ -32,13 +42,14 @@ export default function RewardComponent({
                 title="xp conquistado"
                 value={xp}
                 uppercase
+                type="number"
             />
             <RewardDetail
                 iconSrc={bonusIcon}
                 iconAlt="Icone para presentação de bonus"
                 title="Bônus de missão"
                 value={missionBonus}
-                percentage
+                type="percentage"
             />
         </Box>
     );
