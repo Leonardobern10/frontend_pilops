@@ -7,9 +7,9 @@ export default function App() {
         <Box
             component={'div'}
             sx={(theme: Theme) => ({
-                width: '100vw',
+                width: '100%',
                 height: '100vh',
-                padding: 8,
+                padding: 6,
                 backgroundColor: theme.palette.background.default,
                 display: 'flex',
                 flexDirection: 'column',
