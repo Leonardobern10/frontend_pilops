@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import type { ReactElement } from 'react';
+import { useEffect, type ReactElement } from 'react';
 import type { DetailFlightProps } from '../types/DetailFlightProps';
 
 /**
@@ -12,6 +12,11 @@ export default function DetailFlight({
     content,
     balance
 }: DetailFlightProps): ReactElement {
+    const setSignal = () => {
+        let value = Number(content);
+        if (value < 0) return `- P$ ${Math.abs(value).toFixed(2)}`;
+        else return `P$ ${Math.abs(value).toFixed(2)}`;
+    };
     return (
         <Box
             sx={{
@@ -19,15 +24,16 @@ export default function DetailFlight({
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                paddingLeft: 2,
-                paddingRight: 2
+                whiteSpace: 'nowrap',
+                paddingLeft: 4,
+                paddingRight: 4
             }}>
             <Typography variant="caption">{title}</Typography>
             {balance ? (
                 <Typography
                     variant="body1"
                     color={Number(content) > 0 ? 'success' : 'error'}>
-                    P$ {Number(content).toFixed(2)}
+                    {setSignal()}
                 </Typography>
             ) : (
                 <Typography variant="body1">{content}</Typography>
