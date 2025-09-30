@@ -1,4 +1,4 @@
-import { Box, Card, Stack, Typography } from '@mui/material';
+import { Box, Card, IconButton, Stack, Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router';
 import FlightComponent from '../components/FlightComponent';
 import type FlightInterface from '../types/FlightInterface';
@@ -47,13 +47,15 @@ export default function DetailsFlight() {
                 alignItems="center"
                 spacing={4}
                 component={'article'}>
-                <Box onClick={() => navigate('/api/v1/flight')}>
+                <IconButton
+                    aria-label="voltar"
+                    onClick={() => navigate('/api/v1/flight')}>
                     <img
                         style={{ maxHeight: 25 }}
                         src={leftArrow}
                         alt="Icone de seta, interativo para voltar à seção anterior"
                     />
-                </Box>
+                </IconButton>
                 <Typography variant="h2">Detalhes do Voo</Typography>
             </Stack>
             <Card

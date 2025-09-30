@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { useEffect, type ReactElement } from 'react';
+import { type ReactElement } from 'react';
 import type { DetailFlightProps } from '../types/DetailFlightProps';
 
 /**

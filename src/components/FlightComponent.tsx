@@ -1,4 +1,4 @@
-import { Card } from '@mui/material';
+import { Card, CardActionArea, useTheme } from '@mui/material';
 import type { ReactElement } from 'react';
 import type FlightInterface from '../types/FlightInterface';
 import AircraftInfo from './AircraftInfo';
@@ -27,37 +27,41 @@ export default function FlightComponent({
 }: FlightInterface): ReactElement {
     const navigate = useNavigate();
     return (
-        <Card
-            component={'article'}
-            onClick={() => navigate(`/api/v1/flight/${id}`)}
-            sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-evenly',
-                alignItems: 'center',
-                width: '100%',
-                height: 'fit-content',
-                paddingLeft: 4,
-                paddingRight: 4,
-                paddingBottom: 2,
-                paddingTop: 2,
-                columnGap: 15
-            }}>
-            <AircraftInfo name={aircraft.name} airline={aircraft.airline} />
-            <RouteComponent
-                trajeto="Trajeto"
-                from={flightData.route.from}
-                to={flightData.route.to}
-            />
-            <DetailFlight title="Matricula" content={aircraft.registration} />
-            <DetailFlight title="Data" content={flightData.date} />
-            {balance && (
-                <DetailFlight
-                    title="Saldo"
-                    balance
-                    content={flightData.balance}
+        <Card component={'article'}>
+            <CardActionArea
+                onClick={() => navigate(`/api/v1/flight/${id}`)}
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-evenly',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%',
+                    paddingLeft: 4,
+                    paddingRight: 4,
+                    paddingBottom: 2,
+                    paddingTop: 2,
+                    columnGap: 15
+                }}>
+                <AircraftInfo name={aircraft.name} airline={aircraft.airline} />
+                <RouteComponent
+                    trajeto="Trajeto"
+                    from={flightData.route.from}
+                    to={flightData.route.to}
                 />
-            )}
+                <DetailFlight
+                    title="Matricula"
+                    content={aircraft.registration}
+                />
+                <DetailFlight title="Data" content={flightData.date} />
+                {balance && (
+                    <DetailFlight
+                        title="Saldo"
+                        balance
+                        content={flightData.balance}
+                    />
+                )}
+            </CardActionArea>
         </Card>
     );
 }
