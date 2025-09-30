@@ -4,5 +4,5 @@ export type RewardDetailProps = {
     title: string;
     value: number;
     uppercase?: boolean;
-    percentage?: boolean;
+    type: 'number' | 'balance' | 'percentage';
 };
