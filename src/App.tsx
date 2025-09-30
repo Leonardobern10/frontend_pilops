@@ -8,7 +8,7 @@ export default function App() {
             component={'div'}
             sx={(theme: Theme) => ({
                 width: '100%',
-                height: '100vh',
+                height: '100%',
                 padding: 6,
                 backgroundColor: theme.palette.background.default,
                 display: 'flex',
