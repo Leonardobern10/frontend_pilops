@@ -19,3 +19,10 @@ Aqui o que foi feito é criar uma propridade no componente ao qual indica se ele
         - Saldo < 0 : Vermelho
 
 Essa abordagem permite uma padronização do estilo e formatação dominante no projeto, ao passo que gera uma leve personalização independente.
+
+### Por que separar estilos do Material UI com React?
+No React tudo o que está dentro de um componente, ao ser renderizado é recriado. De modo que todas as definições de estilos inline que são feitas (no Materil UI através da propriedade `sx`) é recriado. Surgem algumas alternativas à isso:
+    - Para estilos que não utilizam o `theme`, podemos definir objetos fora do componente, utilizando essas estilização no componente mas evitando que sejam sempre recriadas.
+        - Dividir esses estilos em arquivos diferentes também é uma boa abordagem.
+    - Para estilos que utilizam o `theme`, podemos utilizar a mesma abordagem anterior mas é importante utilizar o `useMemo` para evitar que essas estilizações sejam recriadas a cada renderização, a não ser que sejam alteradas.
+    - Outra abordagem também utilizada é a criação de componentes utilizando `styled` do material, que remove as estilizações inline e impede a recriação.
