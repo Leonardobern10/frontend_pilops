@@ -29,7 +29,6 @@ export const useHistoryFlight = (
             try {
                 const [data, totalPages]: [FlightInterface[], number] =
                     await getHistoryFlight(currentPage, limit);
-                console.log(data);
                 setFlights(data);
                 setPagesQuantity(totalPages);
             } catch (error) {

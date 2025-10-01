@@ -1,4 +1,3 @@
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { CssBaseline, ThemeProvider } from '@mui/material';
@@ -12,20 +11,18 @@ createRoot(document.getElementById('root')!).render(
     <ThemeProvider theme={theme}>
         {/* É um reset global de CSS que o MUI aplica*/}
         <CssBaseline />
-        <StrictMode>
-            <BrowserRouter>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={<Navigate to="/api/v1/flight" replace />}
-                    />
+        <BrowserRouter>
+            <Routes>
+                <Route
+                    path="/"
+                    element={<Navigate to="/api/v1/flight" replace />}
+                />
 
-                    <Route path="/api/v1/flight" element={<App />}>
-                        <Route index element={<HistoryFlight />} />
-                        <Route path=":id" element={<DetailsFlight />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </StrictMode>
+                <Route path="/api/v1/flight" element={<App />}>
+                    <Route index element={<HistoryFlight />} />
+                    <Route path=":id" element={<DetailsFlight />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     </ThemeProvider>
 );
