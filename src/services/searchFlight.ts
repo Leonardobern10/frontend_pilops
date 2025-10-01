@@ -19,6 +19,7 @@ export const getHistoryFlight = async (
     const flightHistory = await axios.get(
         `${baseUrl}?page=${currentPage}&limit=${limit}`
     );
+    console.log(flightHistory.data);
 
     return [flightHistory.data.flights, flightHistory.data.totalPages];
 };
