@@ -30,7 +30,7 @@ export default function IconComponent({
     titleSection: string;
 }): ReactElement {
     const navigate = useNavigate();
-    const handleClick = () => navigate('/api/v1/flight');
+    const handleClick = () => navigate('flight');
     return (
         <Stack
             direction="row"
