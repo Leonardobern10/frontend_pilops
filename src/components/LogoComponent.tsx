@@ -7,13 +7,13 @@ import logo from '../assets/Logo_pilops.svg';
  */
 export default function LogoComponent() {
     return (
-        <Box
-            component={'header'}
-            sx={{
-                width: 'fit-content',
-                height: 'fit-content'
-            }}>
+        <Box component={'header'} sx={logoStyle}>
             <img src={logo} alt="Logo" />
         </Box>
     );
 }
+
+const logoStyle = {
+    width: 'fit-content',
+    height: 'fit-content'
+};

@@ -7,7 +7,7 @@ import routSvg from '../assets/Trajeto_pilops.svg';
  */
 export default function RouteSvg(): ReactElement {
     return (
-        <Box sx={{ width: '100%', height: '100%' }}>
+        <Box sx={style}>
             <img
                 src={routSvg}
                 alt="Icone svg que representa uma ligação entre dois pontos"
@@ -15,3 +15,8 @@ export default function RouteSvg(): ReactElement {
         </Box>
     );
 }
+
+const style = {
+    width: '100%',
+    height: '100%'
+};

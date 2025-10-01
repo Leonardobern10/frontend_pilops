@@ -1,9 +1,10 @@
-import { Card, CardActionArea, useTheme } from '@mui/material';
+import { Card } from '@mui/material';
 import type { ReactElement } from 'react';
 import type FlightInterface from '../types/FlightInterface';
 import AircraftInfo from './AircraftInfo';
 import RouteComponent from './RouteComponent';
-import DetailFlight from './DetailFlight';
+import InfoFlight from './DetailFlight';
+import CardActionFlightContainer from './ui/CardActionAreaContainer';
 import { useNavigate } from 'react-router';
 
 /**
@@ -26,42 +27,26 @@ export default function FlightComponent({
     balance
 }: FlightInterface): ReactElement {
     const navigate = useNavigate();
+    const handleClick = () => navigate(`/api/v1/flight/${id}`);
     return (
         <Card component={'article'}>
-            <CardActionArea
-                onClick={() => navigate(`/api/v1/flight/${id}`)}
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-evenly',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '100%',
-                    paddingLeft: 4,
-                    paddingRight: 4,
-                    paddingBottom: 2,
-                    paddingTop: 2,
-                    columnGap: 15
-                }}>
+            <CardActionFlightContainer onClick={handleClick}>
                 <AircraftInfo name={aircraft.name} airline={aircraft.airline} />
                 <RouteComponent
                     trajeto="Trajeto"
                     from={flightData.route.from}
                     to={flightData.route.to}
                 />
-                <DetailFlight
-                    title="Matricula"
-                    content={aircraft.registration}
-                />
-                <DetailFlight title="Data" content={flightData.date} />
+                <InfoFlight title="Matricula" content={aircraft.registration} />
+                <InfoFlight title="Data" content={flightData.date} />
                 {balance && (
-                    <DetailFlight
+                    <InfoFlight
                         title="Saldo"
                         balance
                         content={flightData.balance}
                     />
                 )}
-            </CardActionArea>
+            </CardActionFlightContainer>
         </Card>
     );
 }

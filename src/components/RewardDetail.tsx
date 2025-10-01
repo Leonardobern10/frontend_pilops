@@ -1,5 +1,5 @@
-import { Box, Typography } from '@mui/material';
-import type { ReactElement } from 'react';
+import { Box, Typography, useTheme, type Theme } from '@mui/material';
+import { useMemo, type ReactElement } from 'react';
 import type { RewardDetailProps } from '../types/RewardDetailProps';
 
 /**
@@ -24,10 +24,14 @@ export default function RewardDetail({
     uppercase,
     type = 'number'
 }: RewardDetailProps): ReactElement {
+    const theme = useTheme();
+    const styles = useMemo(() => rewardDetailStyles(theme), [theme]);
+
     const checkBalance = () => {
         switch (type) {
             case 'number':
                 return <Typography variant="h1">{value}</Typography>;
+
             case 'balance':
                 let result = Math.abs(value)
                     .toLocaleString('pt-BR', {
@@ -42,29 +46,21 @@ export default function RewardDetail({
                         {result}
                     </Typography>
                 );
+
             case 'percentage':
                 return <Typography variant="h1">{`${value}%`}</Typography>;
+
             default:
                 return <Typography variant="h1">{value}</Typography>;
         }
     };
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                columnGap: 2
-            }}>
+        <Box sx={styles.boxContainer}>
             <Box>
                 <img src={iconSrc} alt={iconAlt} />
             </Box>
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column'
-                }}>
+            <Box sx={styles.boxTitle}>
                 <Typography variant="subtitle2">
                     {uppercase ? title.toUpperCase() : title}
                 </Typography>
@@ -73,3 +69,16 @@ export default function RewardDetail({
         </Box>
     );
 }
+
+const rewardDetailStyles = (theme: Theme) => ({
+    boxContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        columnGap: theme.spacing(2)
+    },
+    boxTitle: {
+        display: 'flex',
+        flexDirection: 'column'
+    }
+});

@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material';
 import type { ReactElement } from 'react';
 import RouteSvg from './RouteSvg';
+import RouteContainer from './ui/RouteContainer';
 
 /**
  * Componente responsável por exibir as informações
@@ -19,13 +20,7 @@ export default function RouteComponent({
     to: string;
 }): ReactElement {
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
-            }}>
+        <RouteContainer>
             <Typography variant="caption">{trajeto}</Typography>
             <Box>
                 <RouteSvg />
@@ -34,6 +29,6 @@ export default function RouteComponent({
                 <Typography variant="body1">{from}</Typography>
                 <Typography variant="body1">{to}</Typography>
             </Stack>
-        </Box>
+        </RouteContainer>
     );
 }
