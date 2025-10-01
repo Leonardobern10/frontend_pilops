@@ -16,9 +16,9 @@ const CardActionFlightContainer = styled(CardActionArea)(({ theme }) => ({
     height: '100%',
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4),
-    paddingBottom: theme.spacing(2),
+    paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(2),
-    columnGap: theme.spacing(20)
+    columnGap: theme.spacing(15)
 }));
 
 export default CardActionFlightContainer;

@@ -95,7 +95,7 @@ theme = createTheme(theme, {
             color: theme.palette.text.secondary
         }
     },
-    shape: { borderRadius: 2 },
+    shape: { borderRadius: 3 },
     components: {
         MuiButton: {
             styleOverrides: {
