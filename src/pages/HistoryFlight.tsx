@@ -1,60 +1,37 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import FlightComponent from '../components/FlightComponent';
-import { getHistoryFlight } from '../services/searchFlight';
-import type FlightInterface from '../types/FlightInterface';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Loading from '../components/Loading';
+import { useHistoryFlight } from '../hooks/useHistoryFlights';
+import type { UseHistoryReturnType } from '../types/UseHistoryReturnType';
+import HistoryFlightContainer from '../components/ui/HistoryFlightContainer';
+import AllFlightsContainer from '../components/ui/AllFlightsContainer';
+import PaginationComponent from '../components/PaginationComponent';
+
+const boxStyle = {
+    height: '100%'
+};
 
 export default function HistoryFlight() {
-    const [flights, setFlights] = useState<FlightInterface[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    let [pagesQuantity, setPagesQuantity] = useState<number>(10);
-    const [currentPage, setCurrentPage] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const length: number = 10;
 
-    useEffect(() => {
-        const getFlights = async () => {
-            try {
-                const [data, totalPages] = await getHistoryFlight();
-                console.log(data);
-                setFlights(data);
-                setPagesQuantity(totalPages);
-            } catch (error) {
-                console.error('Error on search history: ', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        getFlights();
-    }, []);
+    const { flights, pagesQuantity, loading }: UseHistoryReturnType =
+        useHistoryFlight(currentPage, length);
 
     return (
-        <Box component={'main'} sx={{ height: '100%' }}>
+        <Box component={'main'} sx={boxStyle}>
             {loading ? (
                 <Loading />
             ) : (
-                <Box
-                    sx={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        rowGap: 4
-                    }}>
+                <HistoryFlightContainer>
                     <Box>
                         <Typography variant="h1">Histórico de Voos</Typography>
                         <Typography variant="subtitle1">
                             Visualize seu histórico completo de voos realizados
                         </Typography>
                     </Box>
-                    <Box
-                        component={'section'}
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'flex-start',
-                            rowGap: 4
-                        }}>
+                    <AllFlightsContainer>
                         {flights.map((el) => (
                             <FlightComponent
                                 key={el.id}
@@ -64,13 +41,13 @@ export default function HistoryFlight() {
                                 balance
                             />
                         ))}
-                    </Box>
-                    <Stack direction="row" spacing={2}>
-                        {Array.from({ length: pagesQuantity }, (_, i) => (
-                            <p>{i}</p>
-                        ))}
-                    </Stack>
-                </Box>
+                    </AllFlightsContainer>
+                    <PaginationComponent
+                        pagesQuantity={pagesQuantity}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                    />
+                </HistoryFlightContainer>
             )}
         </Box>
     );
