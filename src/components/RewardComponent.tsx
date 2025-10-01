@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import type { ReactElement } from 'react';
 import RewardDetail from './RewardDetail';
 import balanceIcon from '../assets/BalanceIcon_pilops.svg';
