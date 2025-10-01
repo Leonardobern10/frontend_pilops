@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type FlightInterface from '../types/FlightInterface';
 
-const baseUrl: string = 'http://localhost:3000/api/v1/flights';
+const baseUrl: string = import.meta.env.VITE_BASE_URL;
 
 /**
  * Essa função é responsável por realizar uma requisição
