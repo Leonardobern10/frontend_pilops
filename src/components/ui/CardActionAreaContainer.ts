@@ -10,7 +10,7 @@ import { CardActionArea, styled } from '@mui/material';
 const CardActionFlightContainer = styled(CardActionArea)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
     height: '100%',
@@ -18,7 +18,7 @@ const CardActionFlightContainer = styled(CardActionArea)(({ theme }) => ({
     paddingRight: theme.spacing(4),
     paddingBottom: theme.spacing(2),
     paddingTop: theme.spacing(2),
-    columnGap: theme.spacing(15)
+    columnGap: theme.spacing(20)
 }));
 
 export default CardActionFlightContainer;

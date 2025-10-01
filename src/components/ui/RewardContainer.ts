@@ -9,8 +9,7 @@ const RewardContainer = styled(Box)(({ theme }) => ({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     columnGap: theme.spacing(30),
-    width: '100%',
-    border: 2
+    width: '100%'
 }));
 
 export default RewardContainer;
