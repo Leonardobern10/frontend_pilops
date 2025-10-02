@@ -5,6 +5,7 @@ import FlightComponent from '../components/FlightComponent';
 import HistoryFlightContainer from '../components/ui/HistoryFlightContainer';
 import { useScoreFlights } from '../hooks/useScoreFlights';
 import type { ReactElement } from 'react';
+import Loading from '../components/Loading';
 
 /**
  * Componente que abriga dos dados sobre pontuação
@@ -13,11 +14,14 @@ import type { ReactElement } from 'react';
  * @returns
  */
 export default function ScoreFlight(): ReactElement {
-    const currentScore: ScoreResponse | null = useScoreFlights();
+    const [currentScore, loading]: [ScoreResponse | null, boolean] =
+        useScoreFlights();
 
     return (
         <Box>
-            {currentScore ? (
+            {loading ? (
+                <Loading />
+            ) : currentScore ? (
                 <HistoryFlightContainer>
                     <Typography variant="h2">Ganhos Totais</Typography>
                     <Card sx={sx.card}>

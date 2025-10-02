@@ -16,22 +16,25 @@ import type ScoreResponse from '../types/ScoreResponse';
  * - maxBalance: `FlightInterface` - Registro de vôo de maior saldo
  * - minBalance: `FlightInterface` - Registro de vôo de menor saldo
  */
-export const useScoreFlights = (): ScoreResponse | null => {
+export const useScoreFlights = (): [ScoreResponse | null, boolean] => {
     const [currentScore, setCurrentScore] = useState<ScoreResponse>();
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         let scoreStats = async () => {
+            setLoading(true);
             try {
                 let stats = await getScore();
                 setCurrentScore(stats);
             } catch (error) {
                 console.error('Error to get statistics to score.');
             } finally {
+                setLoading(false);
             }
         };
 
         scoreStats();
     }, []);
 
-    return currentScore ? currentScore : null;
+    return [currentScore ? currentScore : null, loading];
 };
