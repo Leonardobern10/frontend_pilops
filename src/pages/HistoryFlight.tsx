@@ -12,6 +12,10 @@ const boxStyle = {
     height: '100%'
 };
 
+/**
+ * Pagina responsável por exibir os todas as informações
+ * com os registros que compõem o historico de voo
+ */
 export default function HistoryFlight() {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const length: number = 10;

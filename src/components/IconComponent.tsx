@@ -1,6 +1,7 @@
 import { IconButton, Stack, Typography } from '@mui/material';
 import type { ReactElement } from 'react';
 import { useNavigate } from 'react-router';
+import type { IconComponentProps } from '../types/IconComponentProps';
 
 // Estilo personalizado da imagem
 const imgStyle = {
@@ -24,11 +25,7 @@ export default function IconComponent({
     iconImage,
     iconAlt,
     titleSection
-}: {
-    iconImage: string;
-    iconAlt: string;
-    titleSection: string;
-}): ReactElement {
+}: IconComponentProps): ReactElement {
     const navigate = useNavigate();
     const handleClick = () => navigate('/flights');
     return (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type FlightInterface from '../types/FlightInterface';
 import { getFlightDetails } from '../services/searchFlight';
+import type { UseDetailsFlightsReturnType } from '../types/UseDetailsFlightReturnType';
 
 /**
  * Hook personalizado que utiliza a função `getFlightDetails(id)`
@@ -12,7 +13,7 @@ import { getFlightDetails } from '../services/searchFlight';
  * e `loading` informa o estado da requisição, se está em andamando `true` ou se
  * encerrou `false`.
  */
-export const useDetailsFlight = (id: string) => {
+export const useDetailsFlight = (id: string): UseDetailsFlightsReturnType => {
     const [currentFlight, setCurrentFlight] = useState<FlightInterface>();
     const [loading, setLoading] = useState<boolean>(true);
 

@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import type { ReactElement } from 'react';
 import AircraftContainer from './ui/AircraftContainer';
+import type { AircraftInfoProps } from '../types/AircraftInfoProps';
 
 /**
  * Componente responsável por exibir as informações do avião.
@@ -11,10 +12,7 @@ import AircraftContainer from './ui/AircraftContainer';
 export default function AircraftInfo({
     name,
     airline
-}: {
-    name: string;
-    airline: string;
-}): ReactElement {
+}: AircraftInfoProps): ReactElement {
     return (
         <AircraftContainer>
             <Typography variant="body1">{name}</Typography>

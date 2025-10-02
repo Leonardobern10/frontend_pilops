@@ -1,5 +1,6 @@
 import { Button, Stack } from '@mui/material';
 import type { ReactElement } from 'react';
+import type { PaginationComponentProps } from '../types/PaginationComponentProps';
 
 /**
  * Componente responsável por abrigar o conjuntos de páginas
@@ -16,11 +17,7 @@ export default function PaginationComponent({
     pagesQuantity,
     currentPage,
     setCurrentPage
-}: {
-    pagesQuantity: number;
-    currentPage: number;
-    setCurrentPage: (page: number) => void;
-}): ReactElement {
+}: PaginationComponentProps): ReactElement {
     const accessPage = () => setCurrentPage(currentPage + 1);
     return (
         <Stack direction="row" spacing={2}>

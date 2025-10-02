@@ -7,6 +7,10 @@ import IconComponent from '../components/IconComponent';
 import { useDetailsFlight } from '../hooks/useDetailsFlight';
 import leftArrow from '../assets/LeftArrow_pilops.svg';
 
+/**
+ * Pagina responsável por exibir os todas as informações
+ * do detalhe de um vôo específico.
+ */
 export default function DetailsFlight() {
     const param = useParams();
     const id: string = param.id!;

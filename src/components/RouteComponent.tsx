@@ -2,6 +2,7 @@ import { Box, Stack, Typography } from '@mui/material';
 import type { ReactElement } from 'react';
 import RouteSvg from './RouteSvg';
 import RouteContainer from './ui/RouteContainer';
+import type { RouteComponentProps } from '../types/RouteComponentProps';
 
 /**
  * Componente responsável por exibir as informações
@@ -14,11 +15,7 @@ export default function RouteComponent({
     trajeto,
     from,
     to
-}: {
-    trajeto: string;
-    from: string;
-    to: string;
-}): ReactElement {
+}: RouteComponentProps): ReactElement {
     return (
         <RouteContainer>
             <Typography variant="caption">{trajeto}</Typography>
