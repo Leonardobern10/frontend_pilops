@@ -1,11 +1,10 @@
 import { Box, styled } from '@mui/material';
-import theme from '../../theme/theme';
 
 /**
  * Componente container que abriga todos os campos de informações
  * de um registro de voo especifico.
  */
-const InfoFlightContainer = styled(Box)(({}) => ({
+const InfoFlightContainer = styled(Box)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
