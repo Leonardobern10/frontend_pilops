@@ -27,7 +27,7 @@ export default function FlightComponent({
     balance
 }: FlightInterface): ReactElement {
     const navigate = useNavigate();
-    const handleClick = () => navigate(`${id}`);
+    const handleClick = () => navigate(`/flights/${id}`);
     return (
         <Card component={'article'}>
             <CardActionFlightContainer onClick={handleClick}>
