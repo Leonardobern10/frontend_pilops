@@ -18,14 +18,21 @@ export default function PaginationComponent({
     currentPage,
     setCurrentPage
 }: PaginationComponentProps): ReactElement {
-    const accessPage = () => setCurrentPage(currentPage + 1);
     return (
         <Stack direction="row" spacing={2}>
-            {Array.from({ length: pagesQuantity }, (_, page) => (
-                <Button variant="text" key={page + 1} onClick={accessPage}>
-                    {page + 1}
-                </Button>
-            ))}
+            {Array.from({ length: pagesQuantity }, (_, page) => {
+                const pageNumber: number = page + 1;
+                return (
+                    <Button
+                        variant={
+                            currentPage === pageNumber ? 'outlined' : 'text'
+                        }
+                        key={pageNumber}
+                        onClick={() => setCurrentPage(pageNumber)}>
+                        {pageNumber}
+                    </Button>
+                );
+            })}
         </Stack>
     );
 }
