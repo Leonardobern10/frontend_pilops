@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import FlightComponent from '../components/FlightComponent';
 import { useState } from 'react';
 import Loading from '../components/Loading';
@@ -7,6 +7,7 @@ import type { UseHistoryReturnType } from '../types/UseHistoryReturnType';
 import HistoryFlightContainer from '../components/ui/HistoryFlightContainer';
 import AllFlightsContainer from '../components/ui/AllFlightsContainer';
 import PaginationComponent from '../components/PaginationComponent';
+import { useNavigate } from 'react-router';
 
 const boxStyle = {
     height: '100%'
@@ -23,18 +24,30 @@ export default function HistoryFlight() {
     const { flights, pagesQuantity, loading }: UseHistoryReturnType =
         useHistoryFlight(currentPage, length);
 
+    const navigate = useNavigate();
+
     return (
         <Box component={'main'} sx={boxStyle}>
             {loading ? (
                 <Loading />
             ) : (
                 <HistoryFlightContainer>
-                    <Box>
-                        <Typography variant="h2">Histórico de Voos</Typography>
-                        <Typography variant="subtitle1">
-                            Visualize seu histórico completo de voos realizados
-                        </Typography>
-                    </Box>
+                    <Stack direction="row" justifyContent="space-between">
+                        <Box>
+                            <Typography variant="h2">
+                                Histórico de Voos
+                            </Typography>
+                            <Typography variant="subtitle1">
+                                Visualize seu histórico completo de voos
+                                realizados
+                            </Typography>
+                        </Box>
+                        <Button
+                            variant="outlined"
+                            onClick={() => navigate('score')}>
+                            Consultar pontuação geral
+                        </Button>
+                    </Stack>
                     <AllFlightsContainer>
                         {flights.map((el) => (
                             <FlightComponent
