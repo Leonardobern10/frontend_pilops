@@ -1,10 +1,10 @@
-import { Box, styled } from '@mui/material';
+import { styled } from '@mui/material';
 
 /**
  * Componente container que abriga todos os campos
  * correspondentes as recompensas de um voo especifico.
  */
-const RewardContainer = styled(Box)(({ theme }) => ({
+const RewardContainer = styled('section')(({ theme }) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
