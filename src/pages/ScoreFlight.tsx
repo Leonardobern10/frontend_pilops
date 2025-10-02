@@ -6,6 +6,12 @@ import HistoryFlightContainer from '../components/ui/HistoryFlightContainer';
 import { useScoreFlights } from '../hooks/useScoreFlights';
 import type { ReactElement } from 'react';
 
+/**
+ * Componente que abriga dos dados sobre pontuação
+ * atingidos no historico de voo.
+ *
+ * @returns
+ */
 export default function ScoreFlight(): ReactElement {
     const currentScore: ScoreResponse | null = useScoreFlights();
 
