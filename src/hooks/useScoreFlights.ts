@@ -21,9 +21,15 @@ export const useScoreFlights = (): ScoreResponse | null => {
 
     useEffect(() => {
         let scoreStats = async () => {
-            let stats = await getScore();
-            setCurrentScore(stats);
+            try {
+                let stats = await getScore();
+                setCurrentScore(stats);
+            } catch (error) {
+                console.error('Error to get statistics to score.');
+            } finally {
+            }
         };
+
         scoreStats();
     }, []);
 
