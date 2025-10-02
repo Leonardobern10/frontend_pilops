@@ -37,3 +37,13 @@ export const getFlightDetails = async (
     const flightDetails = await axios.get(`${baseUrl}/${id}`);
     return flightDetails.data.flight[0];
 };
+
+export const getScore = async () => {
+    try {
+        const score = await axios.get(`${baseUrl}/score`);
+        console.log(score.data);
+        return score.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
