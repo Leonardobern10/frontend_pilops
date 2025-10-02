@@ -30,7 +30,7 @@ export default function HistoryFlight() {
             ) : (
                 <HistoryFlightContainer>
                     <Box>
-                        <Typography variant="h1">Histórico de Voos</Typography>
+                        <Typography variant="h2">Histórico de Voos</Typography>
                         <Typography variant="subtitle1">
                             Visualize seu histórico completo de voos realizados
                         </Typography>

@@ -40,14 +40,14 @@ theme = createTheme(theme, {
         fontSize: 16,
         h1: {
             fontFamily: 'Sora',
-            fontSize: 32, // Trocar por escala relativa
+            fontSize: '2rem', // Trocar por escala relativa
             fontWeight: 700,
             lineHeight: 1.2,
             color: theme.palette.text.primary
         },
         h2: {
             fontFamily: 'Sora',
-            fontSize: 24, // Trocar por escala relativa
+            fontSize: '1.5rem', // Trocar por escala relativa
             fontWeight: 700,
             lineHeight: 1.2,
             color: theme.palette.text.primary
@@ -61,29 +61,29 @@ theme = createTheme(theme, {
         },
         body1: {
             fontFamily: 'Manrope',
-            fontSize: 16,
+            fontSize: '1rem', // 16
             fontWeight: 600,
             lineHeight: 1.4,
             color: theme.palette.text.primary
         },
         body2: {
             fontFamily: 'Manrope',
-            fontSize: 14,
+            fontSize: '0.875rem', // 14
             fontWeight: 500,
             lineHeight: 1.4,
             color: theme.palette.text.secondary
         },
         caption: {
             fontFamily: 'Manrope',
-            fontSize: 12,
+            fontSize: '0.75rem', //12
             fontWeight: 400,
             lineHeight: 1.4,
             color: theme.palette.text.secondary
         },
         subtitle1: {
             fontFamily: 'Sora',
-            fontSize: 18,
-            fontWeight: 600,
+            fontSize: '1.125rem', // 24
+            fontWeight: 500,
             lineHeight: 1.4,
             color: theme.palette.text.secondary
         },
