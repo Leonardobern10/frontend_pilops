@@ -1,4 +1,4 @@
-import { Box, styled } from '@mui/material';
+import { styled } from '@mui/material';
 
 /**
  * Componente container que abriga toda a seção do historico de vôos
