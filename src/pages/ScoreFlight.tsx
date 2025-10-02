@@ -27,28 +27,32 @@ export default function ScoreFlight(): ReactElement {
                             missionBonus={Number(currentScore.missionBonus)}
                         />
                     </Card>
-                    <Box>
-                        <Typography variant="subtitle1">
-                            Melhor pontuação
-                        </Typography>
-                        <FlightComponent
-                            id={currentScore.maxBalance.id}
-                            aircraft={currentScore.maxBalance.aircraft}
-                            flightData={currentScore.maxBalance.flightData}
-                            balance
-                        />
-                    </Box>
-                    <Box>
-                        <Typography variant="subtitle1">
-                            Pior pontuação
-                        </Typography>
-                        <FlightComponent
-                            id={currentScore.minBalance.id}
-                            aircraft={currentScore.minBalance.aircraft}
-                            flightData={currentScore.minBalance.flightData}
-                            balance
-                        />
-                    </Box>
+                    {currentScore.maxBalance && (
+                        <Box>
+                            <Typography variant="subtitle1">
+                                Melhor pontuação
+                            </Typography>
+                            <FlightComponent
+                                id={currentScore.maxBalance.id}
+                                aircraft={currentScore.maxBalance.aircraft}
+                                flightData={currentScore.maxBalance.flightData}
+                                balance
+                            />
+                        </Box>
+                    )}
+                    {currentScore.minBalance && (
+                        <Box>
+                            <Typography variant="subtitle1">
+                                Pior pontuação
+                            </Typography>
+                            <FlightComponent
+                                id={currentScore.minBalance.id}
+                                aircraft={currentScore.minBalance.aircraft}
+                                flightData={currentScore.minBalance.flightData}
+                                balance
+                            />
+                        </Box>
+                    )}
                 </HistoryFlightContainer>
             ) : (
                 <Typography variant="h2" color="error">
