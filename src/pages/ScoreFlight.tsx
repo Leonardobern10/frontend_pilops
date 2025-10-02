@@ -1,28 +1,20 @@
 import { Box, Card, Typography } from '@mui/material';
-import { useEffect, useState, type ReactElement } from 'react';
-import { getScore } from '../services/searchFlight';
 import type ScoreResponse from '../types/ScoreResponse';
 import RewardComponent from '../components/RewardComponent';
 import FlightComponent from '../components/FlightComponent';
 import HistoryFlightContainer from '../components/ui/HistoryFlightContainer';
+import { useScoreFlights } from '../hooks/useScoreFlights';
+import type { ReactElement } from 'react';
 
 export default function ScoreFlight(): ReactElement {
-    const [currentScore, setCurrentScore] = useState<ScoreResponse>();
-
-    useEffect(() => {
-        let score = async () => {
-            let stats = await getScore();
-            setCurrentScore(stats);
-        };
-        score();
-    }, []);
+    const currentScore: ScoreResponse | null = useScoreFlights();
 
     return (
         <Box>
             {currentScore ? (
                 <HistoryFlightContainer>
                     <Typography variant="h2">Ganhos Totais</Typography>
-                    <Card sx={{ padding: 4 }}>
+                    <Card sx={sx.card}>
                         <RewardComponent
                             balance={Number(currentScore.balance)}
                             xp={Number(currentScore.xp)}
@@ -53,8 +45,16 @@ export default function ScoreFlight(): ReactElement {
                     </Box>
                 </HistoryFlightContainer>
             ) : (
-                <Box>Não foi possivel obter os registro estatísticos.</Box>
+                <Typography variant="h2" color="error">
+                    Não foi possivel obter os registro estatísticos.
+                </Typography>
             )}
         </Box>
     );
 }
+
+const sx = {
+    card: {
+        padding: 4
+    }
+};
