@@ -33,12 +33,12 @@ export default function RewardDetail({
                 return <Typography variant="h1">{value}</Typography>;
 
             case 'balance':
-                let result = Math.abs(value)
+                let result = value
                     .toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL'
                     })
-                    .slice(2);
+                    .replace('R$', '');
                 return (
                     <Typography
                         color={`${value > 0 ? 'success' : 'error'}`}
