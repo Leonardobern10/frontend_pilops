@@ -38,10 +38,16 @@ export const getFlightDetails = async (
     return flightDetails.data.flight[0];
 };
 
+/**
+ * Essa função é responsável por realizar uma requisição
+ * HTTP do tipo GET na api e entregar os dados sobre pontuação
+ * geral do historico de voo.
+ *
+ * @returns
+ */
 export const getScore = async () => {
     try {
         const score = await axios.get(`${baseUrl}/score`);
-        console.log(score.data);
         return score.data;
     } catch (error) {
         console.error(error);
