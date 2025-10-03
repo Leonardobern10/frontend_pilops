@@ -14,8 +14,9 @@ import Loading from '../components/Loading';
  * @returns
  */
 export default function ScoreFlight(): ReactElement {
-    const [currentScore, loading]: [ScoreResponse | null, boolean] =
-        useScoreFlights();
+    const [currentScore, loading]: [ScoreResponse, boolean] = useScoreFlights();
+
+    console.log(currentScore, loading);
 
     return (
         <Box>

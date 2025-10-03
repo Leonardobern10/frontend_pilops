@@ -41,6 +41,7 @@ export const getFlightDetails = async (
 export const getScore = async () => {
     try {
         const score = await axios.get(`${baseUrl}/score`);
+        console.log(score.data);
         return score.data;
     } catch (error) {
         console.error(error);
