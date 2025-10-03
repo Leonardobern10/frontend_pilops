@@ -21,6 +21,9 @@ createRoot(document.getElementById('root')!).render(
                     <Route path="score" element={<ScoreFlight />} />
                     <Route path=":id" element={<DetailsFlight />} />
                 </Route>
+
+                {/* Redireciona qualquer rota para o inicio */}
+                <Route path="*" element={<Navigate to="/flights" replace />} />
             </Routes>
         </BrowserRouter>
     </ThemeProvider>
