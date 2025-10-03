@@ -41,7 +41,7 @@ export default function ScoreFlight(): ReactElement {
                     {currentScore.maxBalance && (
                         <Box>
                             <Typography variant="subtitle1">
-                                Melhor pontuação
+                                Maior pontuação
                             </Typography>
                             <FlightComponent
                                 id={currentScore.maxBalance.id}
@@ -54,7 +54,7 @@ export default function ScoreFlight(): ReactElement {
                     {currentScore.minBalance && (
                         <Box>
                             <Typography variant="subtitle1">
-                                Pior pontuação
+                                Menor pontuação
                             </Typography>
                             <FlightComponent
                                 id={currentScore.minBalance.id}
