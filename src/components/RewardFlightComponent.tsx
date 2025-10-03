@@ -1,9 +1,14 @@
 import type { ReactElement } from 'react';
 import RewardFlightContainer from './ui/RewardFlightContainer';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import trophy from '../assets/Trophy_pilops.svg';
 import RewardComponent from './RewardComponent';
 import type { RewardComponentProps } from '../types/RewardComponentProps';
+import { RewardStackContainer } from './ui/RewardStackContainer';
+
+const boxHeight = {
+    height: '1.2rem'
+};
 
 /**
  * Componente que representa toda a seção de recompensas de um voo especifico
@@ -20,20 +25,17 @@ export default function RewardFlightComponent({
 }: RewardComponentProps): ReactElement {
     return (
         <RewardFlightContainer>
-            <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                width="fit-content"
-                spacing={2}>
-                <Box>
+            <RewardStackContainer>
+                <Box sx={boxHeight}>
                     <img
                         src={trophy}
                         alt="Icone de trofeu que acompanha as recompensas"
                     />
                 </Box>
-                <Typography variant="body1">Recompensas</Typography>
-            </Stack>
+                <Typography color="textPrimary" variant="subtitle1">
+                    Recompensas
+                </Typography>
+            </RewardStackContainer>
             <RewardComponent
                 balance={balance}
                 missionBonus={missionBonus}

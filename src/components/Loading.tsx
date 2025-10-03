@@ -1,6 +1,14 @@
 import { Box, CircularProgress, Typography } from '@mui/material';
 import type { ReactElement } from 'react';
 
+const boxLoadingStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    columnGap: 2
+};
+
 /**
  * Componente responsável por representar o carregamento da página,
  * gerando um feedback visual ao usuário.
@@ -9,8 +17,8 @@ import type { ReactElement } from 'react';
  */
 export default function Loading(): ReactElement {
     return (
-        <Box>
-            <Typography variant="body1">
+        <Box sx={boxLoadingStyle}>
+            <Typography variant="h2">
                 Loading...
                 <span>
                     <CircularProgress />
