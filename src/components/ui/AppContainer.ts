@@ -4,15 +4,19 @@ import { Box, styled } from '@mui/material';
  * Componente container que define o layout fixo da aplicação
  */
 const AppContainer = styled(Box)(({ theme }) => ({
-    width: '100%',
     height: '100%',
-    padding: theme.spacing(6),
     backgroundColor: theme.palette.background.default,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    width: '100vw',
     justifyContent: 'space-between',
-    rowGap: theme.spacing(6)
+    rowGap: theme.spacing(6),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up('md')]: {
+        padding: theme.spacing(6),
+        width: '100%'
+    }
 }));
 
 export default AppContainer;

@@ -6,10 +6,16 @@ import { styled } from '@mui/material';
  */
 const RewardContainer = styled('section')(({ theme }) => ({
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'flex-start',
-    columnGap: theme.spacing(30),
-    width: '100%'
+    flexDirection: 'column',
+    rowGap: theme.spacing(5),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+        flexDirection: 'row',
+        columnGap: theme.spacing(30),
+        justifyContent: 'flex-start',
+        width: '100%'
+    }
 }));
 
 export default RewardContainer;

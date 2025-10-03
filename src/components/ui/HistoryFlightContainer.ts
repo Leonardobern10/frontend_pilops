@@ -6,11 +6,15 @@ import { styled } from '@mui/material';
  * @extends `Box`.
  */
 const HistoryFlightContainer = styled('section')(({ theme }) => ({
-    width: '100%',
     height: '100%',
+    width: '100%',
     display: 'flex',
+    justifyContent: 'center',
     flexDirection: 'column',
-    rowGap: theme.spacing(4)
+    rowGap: theme.spacing(4),
+    [theme.breakpoints.up('md')]: {
+        width: '100%'
+    }
 }));
 
 export default HistoryFlightContainer;
