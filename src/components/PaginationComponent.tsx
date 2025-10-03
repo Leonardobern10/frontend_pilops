@@ -1,6 +1,8 @@
 import { Button, Stack } from '@mui/material';
 import type { ReactElement } from 'react';
 import type { PaginationComponentProps } from '../types/PaginationComponentProps';
+import { NumberPageComponent } from './NumberPageComponent';
+import { PaginationContainer } from './ui/PaginationContainer';
 
 /**
  * Componente responsável por abrigar o conjuntos de páginas
@@ -19,20 +21,20 @@ export default function PaginationComponent({
     setCurrentPage
 }: PaginationComponentProps): ReactElement {
     return (
-        <Stack direction="row" spacing={2}>
+        <PaginationContainer>
             {Array.from({ length: pagesQuantity }, (_, page) => {
                 const pageNumber: number = page + 1;
                 return (
-                    <Button
+                    <NumberPageComponent
                         variant={
                             currentPage === pageNumber ? 'outlined' : 'text'
                         }
                         key={pageNumber}
                         onClick={() => setCurrentPage(pageNumber)}>
                         {pageNumber}
-                    </Button>
+                    </NumberPageComponent>
                 );
             })}
-        </Stack>
+        </PaginationContainer>
     );
 }
