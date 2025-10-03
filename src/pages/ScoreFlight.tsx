@@ -6,6 +6,8 @@ import HistoryFlightContainer from '../components/ui/HistoryFlightContainer';
 import { useScoreFlights } from '../hooks/useScoreFlights';
 import type { ReactElement } from 'react';
 import Loading from '../components/Loading';
+import IconComponent from '../components/IconComponent';
+import leftArrow from '../assets/LeftArrow_pilops.svg';
 
 /**
  * Componente que abriga dos dados sobre pontuação
@@ -16,15 +18,19 @@ import Loading from '../components/Loading';
 export default function ScoreFlight(): ReactElement {
     const [currentScore, loading]: [ScoreResponse, boolean] = useScoreFlights();
 
-    console.log(currentScore, loading);
-
     return (
         <Box>
             {loading ? (
                 <Loading />
             ) : currentScore ? (
                 <HistoryFlightContainer>
-                    <Typography variant="h2">Ganhos Totais</Typography>
+                    <Box>
+                        <IconComponent
+                            titleSection="Pontuação geral"
+                            iconImage={leftArrow}
+                            iconAlt="Icone de seta, interativo para voltar à seção anterior"
+                        />
+                    </Box>
                     <Card sx={sx.card}>
                         <RewardComponent
                             balance={Number(currentScore.balance)}
@@ -61,7 +67,7 @@ export default function ScoreFlight(): ReactElement {
                 </HistoryFlightContainer>
             ) : (
                 <Typography variant="h2" color="error">
-                    Não foi possivel obter os registro estatísticos.
+                    Não foi possivel obter os registros estatísticos.
                 </Typography>
             )}
         </Box>
