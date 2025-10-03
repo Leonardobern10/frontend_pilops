@@ -40,17 +40,23 @@ theme = createTheme(theme, {
         fontSize: 16,
         h1: {
             fontFamily: 'Sora',
-            fontSize: '2rem', // Trocar por escala relativa
+            fontSize: '1.6rem', // Trocar por escala relativa
             fontWeight: 700,
             lineHeight: 1.2,
-            color: theme.palette.text.primary
+            color: theme.palette.text.primary,
+            [theme.breakpoints.up('md')]: {
+                fontSize: '2rem' // Trocar por escala relativa
+            }
         },
         h2: {
             fontFamily: 'Sora',
-            fontSize: '1.5rem', // Trocar por escala relativa
+            fontSize: '1.1rem',
             fontWeight: 700,
             lineHeight: 1.2,
-            color: theme.palette.text.primary
+            color: theme.palette.text.primary,
+            [theme.breakpoints.up('md')]: {
+                fontSize: '1.5rem' // Trocar por escala relativa
+            }
         },
         h3: {
             fontFamily: 'Sora',
@@ -68,10 +74,13 @@ theme = createTheme(theme, {
         },
         body2: {
             fontFamily: 'Manrope',
-            fontSize: '0.875rem', // 14
+            fontSize: '0.775rem', // 14
             fontWeight: 500,
             lineHeight: 1.4,
-            color: theme.palette.text.secondary
+            color: theme.palette.text.secondary,
+            [theme.breakpoints.up('md')]: {
+                fontSize: '0.875rem' // Trocar por escala relativa
+            }
         },
         caption: {
             fontFamily: 'Manrope',
@@ -82,10 +91,13 @@ theme = createTheme(theme, {
         },
         subtitle1: {
             fontFamily: 'Sora',
-            fontSize: '1.125rem', // 24
+            fontSize: '0.825rem', // 24
             fontWeight: 500,
             lineHeight: 1.4,
-            color: theme.palette.text.secondary
+            color: theme.palette.text.secondary,
+            [theme.breakpoints.up('md')]: {
+                fontSize: '1.125rem' // Trocar por escala relativa
+            }
         },
         subtitle2: {
             fontFamily: 'Manrope',
@@ -111,12 +123,7 @@ theme = createTheme(theme, {
                 root: {
                     backgroundColor: theme.palette.background.paper,
                     border: `.5px solid ${theme.palette.secondary.main}`,
-                    width: '100%',
-                    paddingLeft: 4,
-                    paddingRight: 4,
-                    paddingBottom: 4,
-                    paddingTop: 2,
-                    columnGap: 10
+                    width: '100%'
                 }
             }
         }
