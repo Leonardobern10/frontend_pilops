@@ -5,6 +5,7 @@ import { styled } from '@mui/material';
  */
 const AllFlightsContainer = styled('section')(({ theme }) => ({
     display: 'flex',
+    width: '100%',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     rowGap: theme.spacing(4)

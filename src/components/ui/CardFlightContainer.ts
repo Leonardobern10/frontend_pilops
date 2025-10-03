@@ -9,7 +9,7 @@ import { CardActionArea, styled } from '@mui/material';
  */
 const CardActionFlightContainer = styled(CardActionArea)(({ theme }) => ({
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
     width: '100%',
@@ -18,11 +18,8 @@ const CardActionFlightContainer = styled(CardActionArea)(({ theme }) => ({
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     [theme.breakpoints.up('md')]: {
-        paddingLeft: theme.spacing(4),
-        paddingRight: theme.spacing(4),
         paddingBottom: theme.spacing(3),
         paddingTop: theme.spacing(2),
-        columnGap: theme.spacing(15),
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between'
