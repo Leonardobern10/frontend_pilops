@@ -8,6 +8,7 @@ import HistoryFlightContainer from '../components/ui/HistoryFlightContainer';
 import AllFlightsContainer from '../components/ui/AllFlightsContainer';
 import PaginationComponent from '../components/PaginationComponent';
 import { useNavigate } from 'react-router';
+import { HeaderHistoryContainer } from '../components/ui/HeaderHistoryContainer';
 
 const boxStyle = {
     height: '100%'
@@ -32,7 +33,7 @@ export default function HistoryFlight() {
                 <Loading />
             ) : (
                 <HistoryFlightContainer>
-                    <Stack direction="row" justifyContent="space-between">
+                    <HeaderHistoryContainer>
                         <Box>
                             <Typography variant="h2">
                                 Histórico de Voos
@@ -47,7 +48,7 @@ export default function HistoryFlight() {
                             onClick={() => navigate('score')}>
                             Consultar pontuação geral
                         </Button>
-                    </Stack>
+                    </HeaderHistoryContainer>
                     <AllFlightsContainer>
                         {flights.map((el) => (
                             <FlightComponent
