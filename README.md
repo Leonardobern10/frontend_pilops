@@ -3,6 +3,36 @@ Esse projeto consiste no frontend da aplicação correspondente ao desafio propo
 
 Aqui estarão, além da disponibilização do próprio frontend em si, algumas das decisões técnicas durante a codificação do projeto.
 
+Projeto rodando em: https://frontend-pilops.vercel.app/flights
+
+![](https://img.shields.io/badge/Node.js-5FA04E.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
+![](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black)
+![](https://img.shields.io/badge/Vite-646CFF.svg?style=for-the-badge&logo=Vite&logoColor=white)
+![](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
+![](https://img.shields.io/badge/React%20Router-CA4245.svg?style=for-the-badge&logo=React-Router&logoColor=white)
+![](https://img.shields.io/badge/Material%20Design-6750A4.svg?style=for-the-badge&logo=Material-Design&logoColor=white)
+![](https://img.shields.io/badge/Axios-5A29E4.svg?style=for-the-badge&logo=Axios&logoColor=white)
+![](https://img.shields.io/badge/Prettier-F7B93E.svg?style=for-the-badge&logo=Prettier&logoColor=black)
+
+## Tecnologias utilizadas
+
+Node.js - Ambiente de execução JavaScript no servidor.
+TypeScript - Tipagem estática para JavaScript.
+React - Biblioteca para construção de interfaces.
+Vite - Ferramenta de build rápida para frontend.
+Material UI	- Biblioteca de componentes UI com design consistente.
+Axios - Cliente HTTP para comunicação com backend.
+React Router - Gerenciamento de rotas SPA.
+Prettier - Padronização de formatação de código.
+
+## Sumário
+1. [Como rodar o projeto](#como-rodar-o-projeto)
+2. [Funcionalidades](#funcionalidades)
+3. [Modelagem](#modelagem)
+4. [Decisões técnicas](#decisões-técnicas)
+5. [Melhorias futuras](#melhorias-futuras)
+
 ## Como rodar o projeto
 
 1. Faça o clone do repopositório
@@ -24,7 +54,7 @@ npm install
 4. Defina as variáveis de ambiente (servidor local)
 
 ```shell
-VITE_BASE_URL=sua_variavel
+VITE_BASE_URL=http://localhost:5173
 ```
 
 5. Execute a aplicação
@@ -36,6 +66,123 @@ npm run dev
 Acesse: http://localhost:5173
 
 **É necessário que servidor local de aplicação esteja rodando**.
+
+## Funcionalidades
+
+### 1. Acessar histórico: O usuário consegue acessar seu histórico de vôos, exibindo as seguintes métricas:
+
+- aircraft: Dados referentes à aeronave
+    - name: Nome da aeronave
+    - registration: Registro 
+    - airline: Linha área
+- flightData: Dados referentes ao registro de vôo
+    - date: Data
+    - balance: Saldo
+    - route: Dados referentes à rota feita
+        - from: Partida
+        - to: Chegada
+
+   **Exemplo**:
+
+    ```json
+    aircraft: {
+        name: 'Cessna 172 G1000',
+        registration: 'PR-PNK',
+        airline: 'Pilops Academy'
+        },
+    flightData: {
+        date: '2025-07-22',
+        balance: 1065
+        route: { 
+            from: 'SBRJ', 
+            to: 'SBFZ' 
+        },
+    }
+    ```
+### 2. Consultar detalhes de um vôo específico: O usuário consegue, ao acessar em um registro de vôo específico, obter mais detalhes sobre o mesmo. Os dados relatados são:
+
+- aircraft: Dados referentes à aeronave
+    - name: Nome da aeronave
+    - registration: Registro 
+    - airline: Linha área
+- flightData: Dados referentes ao registro de vôo
+    - date: Data
+    - balance: Saldo
+    - route: Dados referentes à rota feita
+        - from: Partida
+        - to: Chegada
+    - xp: Pontuação de xp adquirida
+    - missionBonus: Pontuação bonus (em porcentagem) adquirida
+
+    **Exemplo:**
+    ```json
+    aircraft: {
+        name: 'Cessna 172 G1000',
+        registration: 'PR-PNK',
+        airline: 'Pilops Academy'
+        },
+    flightData: {
+        date: '2025-07-22',
+        balance: 1065
+        route: { 
+            from: 'SBRJ', 
+            to: 'SBFZ' 
+        },
+        xp: 445,
+        missionBonus: 1
+    }
+    ```
+
+### 3. Consultar pontuação com base no histórico: O usuário consegue, ao clicar no botão "Consultar pontuação geral", obter dados estatísticos sobre a pontuação com base no seu histórico. As estatísticas são:
+
+- balance: O saldo total obtido da soma de todas as pontuações do usuário
+- xp: O sado total obtido da soma de todos xps adquiridos.
+- missionBonus: O saldo total de bonus de missão obtidos da soma de todos os bonus adquiridos.
+- maxBalance: O registro de vôo de maior pontuação atingida pelo usuário.
+- minBalance: O registro de vôo de menor pontuação atingida pelo usuário.
+
+    **Exemplo:**
+
+    ```json
+    balance: "189464.87",
+    xp: "31781.00",
+    missionBonus": "9.65",
+    maxBalance: {
+        id: "FL-067",
+        aircraft: {
+        name: "ATR 72",
+        registration: "PR-JFT",
+        airline: "Pilops Regional"
+        },
+        flightData: {
+            date: "2025-09-09",
+            balance: 4943,
+            route: {
+                "from": "SBSP",
+                "to": "SBFZ"
+        },
+        xp: 125,
+        missionBonus": 0.05
+        }
+    },
+    minBalance: {
+        id: "FL-006",
+        aircraft: {
+        name: "Pilatus PC-12",
+        registration: "PR-HSP",
+        airline: "Pilops Cargo"
+        },
+        flightData: {
+            date: "2025-08-10",
+            balance: -4999,
+            route: {
+                from: "SBME",
+                to: "SBSP"
+        },
+        xp: 402,
+        missionBonus: 0.1
+        }
+    }
 
 ## Modelagem
 ### Casos de uso:
@@ -118,3 +265,8 @@ Obs: **Deve estar localizado na raiz do projeto**.
 Outra abordagem que também utilizaremos é definir ao nosso **React Router** uma rota coringa para que toda a vez que uma uri que não existe for pesquisada, o usuario seja direcionado para a home (`/`) do projeto.
 
 Upgrade: Em melhorias futuras, devemos implementar uma pagina `NotFoundPage` com uma representação e animação, indicando que o usuário busca por uma pagina que não existe, e dar à ele a opção de voltar.
+
+## Melhorias futuras
+1. Adição de testes unitários e integração com React Testing Library, e E-2-E (Cypress);
+2. Adição de alternância entre temas Claro e Escuro.
+3. Adição de animações com Framer Motion (mais simples) ou GSAP (mais complexas).
