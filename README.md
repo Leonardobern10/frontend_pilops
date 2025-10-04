@@ -17,14 +17,14 @@ Projeto rodando em: https://frontend-pilops.vercel.app/flights
 
 ## Tecnologias utilizadas
 
-Node.js - Ambiente de execução JavaScript no servidor.
-TypeScript - Tipagem estática para JavaScript.
-React - Biblioteca para construção de interfaces.
-Vite - Ferramenta de build rápida para frontend.
-Material UI	- Biblioteca de componentes UI com design consistente.
-Axios - Cliente HTTP para comunicação com backend.
-React Router - Gerenciamento de rotas SPA.
-Prettier - Padronização de formatação de código.
+- `Node.js` - Ambiente de execução JavaScript no servidor.
+- `TypeScript` - Tipagem estática para JavaScript.
+- `React` - Biblioteca para construção de interfaces.
+- `Vite` - Ferramenta de build rápida para frontend.
+- `Material UI` - Biblioteca de componentes UI com design consistente.
+- `Axios` - Cliente HTTP para comunicação com backend.
+- `React Router` - Gerenciamento de rotas SPA.
+- `Prettier` - Padronização de formatação de código.
 
 ## Sumário
 1. [Como rodar o projeto](#como-rodar-o-projeto)
@@ -54,8 +54,10 @@ npm install
 4. Defina as variáveis de ambiente (servidor local)
 
 ```shell
-VITE_BASE_URL=http://localhost:5173
+VITE_BASE_URL=http://localhost:3000/flights
 ```
+
+*Criar um arquivo `.env` na raiz do projeto*
 
 5. Execute a aplicação
 
@@ -203,52 +205,30 @@ Acesse: http://localhost:5173
 
 
 ## Decisões técnicas
-### Porque Material UI?
-O **Material UI** é uma framework para a criação de componentes que permite uma boa centralização da estilização global da aplicação, evitando que estilos aleatórios sejam aplicados e replicados ao sistema. Por meio de seu arquivo `theme.ts` fica facilitado a especificação de design do projeto, como cores, espaçamento, fontes, etc. Podemos citar também sua compatilibilidade e forte integração diversas bibliotecas muito usadas como **React Hook Form**, **Zustand**, etc.
+### Por que utilizar Material UI?
+O **Material UI** é um framework para a criação de componentes que permite uma boa centralização da estilização global da aplicação, evitando que estilos aleatórios sejam aplicados e replicados ao sistema. Por meio de seu arquivo `theme.ts` fica facilitado a especificação de design do projeto, como cores, espaçamento, fontes, etc. Podemos citar também sua compatilibilidade e forte integração diversas bibliotecas muito usadas como **React Hook Form**, **Zustand**, etc.
 
 ### Porque criar um único componente `DetailFlight`?
-Esse componente renderiza um texto que representa o `titulo` daquele conteudo e um outro texto `content`. Esse estilo e formatação correspondem a todas essas informações auxiliares, inclusive o `balance` (saldo), na qual a única diferença é a cor do salde que varia conforme o valor: 
+Esse componente renderiza um texto que representa o `titulo` daquele conteudo e um outro texto `content`. Esse estilo e formatação correspondem a todas essas informações auxiliares, inclusive o `balance` (saldo), na qual a única diferença é a cor do sald que varia conforme o valor.
 
-- Saldo > 0 : Verde
-- Saldo <= 0 : Vermelho
-
-Aqui o que foi feito é criar uma propridade no componente ao qual indica se ele irá receber um `balance` através de um booleano. 
-
-- Quando `balance` é false, nada se altera;
-- Quando `balance` é true, então o componente verifica o valor recebido e checa as condicionais:
-    - Saldo >= 0 : Verde
-    - Saldo < 0 : Vermelho
+Aqui o que foi feito é criar uma propriedade no componente ao qual indica se ele irá receber um `balance` através de um booleano. 
 
 Essa abordagem permite uma padronização do estilo e formatação dominante no projeto, ao passo que gera uma leve personalização independente.
 
 ### Por que separar estilos do Material UI com React?
-No React tudo o que está dentro de um componente, ao ser renderizado é recriado. De modo que todas as definições de estilos inline que são feitas (no Materil UI através da propriedade `sx`) é recriado. Surgem algumas alternativas à isso:
-
-
-- Para estilos que não utilizam o `theme`, podemos definir objetos fora do componente, utilizando essas estilização no componente mas evitando que sejam sempre recriadas.
-    - Dividir esses estilos em arquivos diferentes também é uma boa abordagem.
-- Para estilos que utilizam o `theme`, podemos utilizar a mesma abordagem anterior mas é importante utilizar o `useMemo` para evitar que essas estilizações sejam recriadas a cada renderização, a não ser que sejam alteradas.
-- Outra abordagem também utilizada é a criação de componentes utilizando `styled` do material, que remove as estilizações inline e impede a recriação.
+Evita recriação desnecessária de objetos de estilo em cada renderização, melhorando desempenho. Estratégias possíveis:
+    - Definir estilos fora do componente.
+    - Usar `useMemo` para estilos dependentes de `theme`.
+    - Criar componentes com `styled` do Material UI para evitar estilos inline.
 
 ### Por que a criação dos hooks personalizados?
-A criação desses hooks permite remover informações do componente ao qual ele não "precisa saber", é o SRP - Princípio da Separação de Responsabilidades. A função do nosso componente é renderizar a informação recebida e não "saber como ela foi obtida" o que chamamos de "encapsulamento". Entre outras vantagens, podemos citar:
-
-- Permite uma melhor legibilidade do código e extensão, pois caso em algum momento seja alterada a forma de se obter os dados, retornando no formato correto não há muita problemas.
-- Essas funções (hooks) podem ser reutilizados em qualquer lugar da aplicação sem repetir a logica da requisição.
-
-- OBS: Um hook personalizado é uma função mas que depende ou utiliza alguns dos hooks fornecidos pelo React. Ex: `useEffect`, `useState`, etc.
+Seguem o **SRP (Separação de Responsabilidades)**, isolando lógica de obtenção de dados dos componentes. Isso aumenta legibilidade, reutilização e manutenção de código.
 
 ### Por que o arquivo vercel.json?
 O arquivo `vercel.json` trata de um erro muito comum no deploy de SPA (Sigle Page Application) hospedades na plataforma (Vercel).
 
-O que acontece:
-
-- Quando entramos no site pela home (/) e cliclamos em algum elemento com link e somos redirecionados para `/flights`, o responsável por esse roteamento é o router (no nosso caso, **React Router**), no lado do cliente.
-- Mas quando digitamos e buscamos diretamente no navegador `https://frontend-pilops.vercel.app/flights`, o próprio navegador faz uma requisição HTTP real para o servidor da Vercel pedindo exatamente o arquivo `/flights`.
-- Como esse arquivo não existe fisicamente no servidor, o servidor retorna **404**.
-
 Resolução:
-Para resolver esse problemas, configuramos um **rewrite** para que qualquer rota desconhecida seja redirecionada para o `index.html`, e aí então nosso frontend consiga cuidar do roteamento.
+Previe erro comum em **SPAs hospedades na Vercel**, redirecionando todas as rotas desconhecidas para `index.html`, permitindo que o **React Router** cuide do roteamente.
 
 Obs: **Deve estar localizado na raiz do projeto**.
 
@@ -260,11 +240,15 @@ Obs: **Deve estar localizado na raiz do projeto**.
 }
 ```
 
-**Isso garante que qualquer rota seja servida pelo `index.html`.**
-
-Outra abordagem que também utilizaremos é definir ao nosso **React Router** uma rota coringa para que toda a vez que uma uri que não existe for pesquisada, o usuario seja direcionado para a home (`/`) do projeto.
-
 Upgrade: Em melhorias futuras, devemos implementar uma pagina `NotFoundPage` com uma representação e animação, indicando que o usuário busca por uma pagina que não existe, e dar à ele a opção de voltar.
+
+📄 Para detalhes técnicos completos, consulte o arquivo [notations.md](./notations.md).
+- Motivação para uso do Material UI
+- Estrutura do componente `DetailFlight`
+- Função do `ThemeProvider` e `CSSBaseline`
+- Estratégias em estilização para melhora de desempenho
+- Lógica dos hooks personalizados
+- Configuração do arquivo `vercel.json` e como o problema é resolvido
 
 ## Melhorias futuras
 1. Adição de testes unitários e integração com React Testing Library, e E-2-E (Cypress);
