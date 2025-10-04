@@ -1,5 +1,8 @@
 import { Box, styled } from '@mui/material';
 
+/**
+ * Componente reponsável por dividir o flightComponente em dois.
+ */
 export const BoxDivisionFlightContainer = styled(Box)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
