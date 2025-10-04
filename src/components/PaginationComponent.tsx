@@ -1,4 +1,3 @@
-import { Button, Stack } from '@mui/material';
 import type { ReactElement } from 'react';
 import type { PaginationComponentProps } from '../types/PaginationComponentProps';
 import { NumberPageComponent } from './NumberPageComponent';

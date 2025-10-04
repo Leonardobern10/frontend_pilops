@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import FlightComponent from '../components/FlightComponent';
 import { useState } from 'react';
 import Loading from '../components/Loading';
